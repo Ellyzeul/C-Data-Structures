@@ -17,5 +17,5 @@ void linkedListAppend(LinkedList* list, void* append) {
 }
 
 Iterator* linkedListGetIterator(const LinkedList* list) {
-  return allocIterator(list->first);
+  return allocIterator(list->first, SIMPLE_NODE);
 }

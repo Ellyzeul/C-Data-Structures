@@ -1,22 +1,25 @@
 #include "data_structures.h"
 #include <stdlib.h>
 
-Iterator* allocIterator(SimpleNode* first) {
+Iterator* allocIterator(SimpleNode* first, NodeType type) {
   Iterator* iter = calloc(1, sizeof(Iterator));
 
-  iter->current = first;
+  iter->type = type;
+  iter->simpleCurrent = first;
 
   return iter;
 }
 
 void* iterGetNext(Iterator* iter) {
-  void* toReturn = iter->current->head;
-
-  if(toReturn == NULL) {
-    free(iter);
-    return toReturn;
+  void* toReturn;
+  switch (iter->type) {
+    case SIMPLE_NODE:
+      toReturn = iter->simpleCurrent->head;
+      if(toReturn != NULL) iter->simpleCurrent = iter->simpleCurrent->tail;
+      break;
   }
-  iter->current = iter->current->tail;
+
+  if(toReturn == NULL) free(iter);
 
   return toReturn;
 }

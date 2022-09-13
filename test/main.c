@@ -16,5 +16,5 @@ int main(void) {
   printTestHeader("Iterator");
   testAllocIterator();
 
-  printf("\n\n");
+  printf("\n\nAll tests cleared.\n\n");
 }

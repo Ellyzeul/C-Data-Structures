@@ -11,11 +11,15 @@ SimpleNode* allocSimpleNode();
 
 ////////// Iterator /////////////////////////
 
+typedef enum {SIMPLE_NODE} NodeType;
 typedef struct {
-  SimpleNode* current;
+  NodeType type;
+  union {
+    SimpleNode* simpleCurrent;
+  };
 } Iterator;
 
-Iterator* allocIterator(SimpleNode* first);
+Iterator* allocIterator(SimpleNode* first, NodeType type);
 void* iterGetNext(Iterator* iter);
 
 ////////// Linked List //////////////////////

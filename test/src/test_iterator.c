@@ -15,7 +15,7 @@ void testAllocIterator() {
   node1.tail = &node2;
   node2.head = (void*) &test2;
   
-  iter = allocIterator(&node1);
+  iter = allocIterator(&node1, SIMPLE_NODE);
 
   assert(iterGetNext(iter) == &test1);
   assert(iterGetNext(iter) == &test2);
