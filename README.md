@@ -26,7 +26,11 @@ TestStruct example;
 TestStruct *retrieved;
 
 example.member = 19;
+node->head = (void*) example;
 
+retrieved = (TestStruct*) node->head;
+
+assert(retrieved->member == example.member);
 ```
 
 ### Iterator
