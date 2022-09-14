@@ -26,7 +26,7 @@ TestStruct example;
 TestStruct *retrieved;
 
 example.member = 19;
-node->head = (void*) example;
+node->head = example;
 
 retrieved = (TestStruct*) node->head;
 
@@ -55,9 +55,9 @@ TestStruct test1, test2, *retrieved1, *retrieved2;
 
 test1.member = 1;
 test2.member = 2;
-node1.head = (void*) &test1;
+node1.head = &test1;
 node1.tail = &node2;
-node2.head = (void*) &test2;
+node2.head = &test2;
 
 iter = allocIterator(&node1, SIMPLE_NODE);
 retrieved1 = (TestStruct*) iterGetNext(iter);
@@ -89,7 +89,7 @@ TestStruct example;
 TestStruct *retrieved;
 
 example.member = 42;
-linkedListAppend(list, (void*) &example);
+linkedListAppend(list, &example);
 
 retrieved = list->first->head;
 
@@ -114,8 +114,8 @@ TestStruct expected1, expected2, *retrieved1, *retrieved2, *retrieved3;
 expected1.member = 1;
 expected2.member = 2;
 
-stackPush(stack, (void*) &expected1);
-stackPush(stack, (void*) &expected2);
+stackPush(stack, &expected1);
+stackPush(stack, &expected2);
 
 retrieved1 = (TestStruct*) stackPop(stack);
 retrieved2 = (TestStruct*) stackPop(stack);
@@ -147,11 +147,11 @@ expected1.member = 2;
 expected2.member = 4;
 expected3.member = 6;
 
-queueAppend(queue, (void*) &expected1);
-queueAppend(queue, (void*) &expected2);
+queueAppend(queue, &expected1);
+queueAppend(queue, &expected2);
 retrieved1 = (TestStruct*) queueNext(queue);
 retrieved2 = (TestStruct*) queueNext(queue);
-queueAppend(queue, (void*) &expected3);
+queueAppend(queue, &expected3);
 retrieved3 = (TestStruct*) queueNext(queue);
 
 assert(retrieved1->member == expected1.member);

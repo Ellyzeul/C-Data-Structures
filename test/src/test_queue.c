@@ -38,11 +38,11 @@ void testQueueNext() {
   expected2.member = 4;
   expected3.member = 6;
 
-  queueAppend(queue, (void*) &expected1);
-  queueAppend(queue, (void*) &expected2);
+  queueAppend(queue, &expected1);
+  queueAppend(queue, &expected2);
   retrieved1 = (TestStruct*) queueNext(queue);
   retrieved2 = (TestStruct*) queueNext(queue);
-  queueAppend(queue, (void*) &expected3);
+  queueAppend(queue, &expected3);
   retrieved3 = (TestStruct*) queueNext(queue);
 
   assert(retrieved1->member == expected1.member);

@@ -11,9 +11,9 @@ void testAllocIterator() {
 
   test1.member = 1;
   test2.member = 2;
-  node1.head = (void*) &test1;
+  node1.head = &test1;
   node1.tail = &node2;
-  node2.head = (void*) &test2;
+  node2.head = &test2;
   
   iter = allocIterator(&node1, SIMPLE_NODE);
 

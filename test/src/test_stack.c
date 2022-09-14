@@ -20,8 +20,8 @@ void testStackPush() {
   expected1.member = 1;
   expected2.member = 2;
 
-  stackPush(stack, (void*) &expected1);
-  stackPush(stack, (void*) &expected2);
+  stackPush(stack, &expected1);
+  stackPush(stack, &expected2);
 
   retrieved1 = (TestStruct*) stack->top->head;
   retrieved2 = (TestStruct*) stack->top->tail->head;
@@ -39,8 +39,8 @@ void testStackPop() {
   expected1.member = 1;
   expected2.member = 2;
 
-  stackPush(stack, (void*) &expected1);
-  stackPush(stack, (void*) &expected2);
+  stackPush(stack, &expected1);
+  stackPush(stack, &expected2);
 
   retrieved1 = (TestStruct*) stackPop(stack);
   retrieved2 = (TestStruct*) stackPop(stack);

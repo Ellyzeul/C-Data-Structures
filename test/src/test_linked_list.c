@@ -20,8 +20,8 @@ void testLinkedListAppend() {
   TestStruct expected1, expected2;
   expected1.member = 1;
   expected2.member = 2;
-  linkedListAppend(list, (void*) &expected1);
-  linkedListAppend(list, (void*) &expected2);
+  linkedListAppend(list, &expected1);
+  linkedListAppend(list, &expected2);
 
   assert(((TestStruct*) list->first->head)->member == expected1.member);
   assert(((TestStruct*) list->first->tail->head)->member == expected2.member);
