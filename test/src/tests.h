@@ -12,4 +12,8 @@ void testLinkedListAppend();
 
 void testAllocIterator();
 
+void testAllocStack();
+void testStackPush();
+void testStackPop();
+
 #endif//__ELLYZEUL__TEST__GENERIC_DATA_STRUCTURES__

@@ -34,4 +34,16 @@ LinkedList* allocLinkedList();
 void linkedListAppend(LinkedList* list, void* append);
 Iterator* linkedListGetIterator(const LinkedList* list);
 
+////////// Stack ////////////////////////////
+
+typedef struct {
+  SimpleNode* top;
+  int size;
+} Stack;
+
+Stack* allocStack();
+void stackPush(Stack* stack, void* push);
+void* stackPop(Stack* stack);
+Iterator* stackGetIterator(const Stack* stack);
+
 #endif//__ELLYZEUL__GENERIC_DATA_STRUCTURES__

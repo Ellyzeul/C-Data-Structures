@@ -9,12 +9,17 @@ int main(void) {
   printTestHeader("Node");
   testAllocSimpleNode();
 
+  printTestHeader("Iterator");
+  testAllocIterator();
+
   printTestHeader("Linked List");
   testAllocLinkedList();
   testLinkedListAppend();
 
-  printTestHeader("Iterator");
-  testAllocIterator();
+  printTestHeader("Stack");
+  testAllocStack();
+  testStackPush();
+  testStackPop();
 
   printf("\n\nAll tests cleared.\n\n");
 }
