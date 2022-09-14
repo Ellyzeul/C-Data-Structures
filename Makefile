@@ -9,12 +9,15 @@ _compile_obj:
 	gcc -c $(SOURCE_FOLDER)iterator.c -o $(OBJ_FOLDER)iterator.o
 	gcc -c $(SOURCE_FOLDER)linked_list.c -o $(OBJ_FOLDER)linked_list.o
 	gcc -c $(SOURCE_FOLDER)stack.c -o $(OBJ_FOLDER)stack.o
+	gcc -c $(SOURCE_FOLDER)queue.c -o $(OBJ_FOLDER)queue.o
 
 _compile_test_obj:
+	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)tests.c -o $(TEST_FOLDER)$(OBJ_FOLDER)tests.o
 	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)test_node.c -o $(TEST_FOLDER)$(OBJ_FOLDER)test_node.o
 	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)test_iterator.c -o $(TEST_FOLDER)$(OBJ_FOLDER)test_iterator.o
 	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)test_linked_list.c -o $(TEST_FOLDER)$(OBJ_FOLDER)test_linked_list.o
 	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)test_stack.c -o $(TEST_FOLDER)$(OBJ_FOLDER)test_stack.o
+	gcc -c $(TEST_FOLDER)$(SOURCE_FOLDER)test_queue.c -o $(TEST_FOLDER)$(OBJ_FOLDER)test_queue.o
 
 build_object:
 	make _compile_obj
