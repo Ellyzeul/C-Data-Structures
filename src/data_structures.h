@@ -46,4 +46,17 @@ void stackPush(Stack* stack, void* push);
 void* stackPop(Stack* stack);
 Iterator* stackGetIterator(const Stack* stack);
 
+////////// Queue ////////////////////////////
+
+typedef struct {
+  SimpleNode* first;
+  SimpleNode* last;
+  int size;
+} Queue;
+
+Queue* allocQueue();
+void queueAppend(Queue* queue, void* append);
+void* queueNext(Queue* queue);
+Iterator* queueGetIterator(const Queue* queue);
+
 #endif//__ELLYZEUL__GENERIC_DATA_STRUCTURES__
