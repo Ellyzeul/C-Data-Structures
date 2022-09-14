@@ -12,7 +12,7 @@ void testAllocLinkedList() {
   assert(list->first == list->last);
   assert(list->size == 0);
 
-  printf(".");
+  printSuccess();
 }
 
 void testLinkedListAppend() {
@@ -28,5 +28,5 @@ void testLinkedListAppend() {
   assert(list->first->head == &expected1);
   assert(list->first->tail->head == &expected2);
 
-  printf(".");
+  printSuccess();
 }

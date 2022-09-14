@@ -10,7 +10,7 @@ void testAllocStack() {
   assert(stack->top == NULL);
   assert(stack->size == 0);
 
-  printf(".");
+  printSuccess();
 }
 
 void testStackPush() {
@@ -29,7 +29,7 @@ void testStackPush() {
   assert(retrieved1->member == expected2.member);
   assert(retrieved2->member == expected1.member);
 
-  printf(".");
+  printSuccess();
 }
 
 void testStackPop() {
@@ -50,5 +50,5 @@ void testStackPop() {
   assert(retrieved2->member == expected1.member);
   assert(retrieved3 == NULL);
 
-  printf(".");
+  printSuccess();
 }

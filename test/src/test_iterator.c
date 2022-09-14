@@ -20,5 +20,5 @@ void testAllocIterator() {
   assert(iterGetNext(iter) == &test1);
   assert(iterGetNext(iter) == &test2);
 
-  printf(".");
+  printSuccess();
 }

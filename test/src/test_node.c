@@ -10,5 +10,5 @@ void testAllocSimpleNode() {
   assert(node->head == NULL);
   assert(node->tail == NULL);
 
-  printf(".");
+  printSuccess();
 }
