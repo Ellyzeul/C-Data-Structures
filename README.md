@@ -9,8 +9,8 @@ It stores variables of type `void*` so, whenever you are storing or retrieving, 
 ### SimpleNode
 
 This is a base structure, you probably won't need to touch this, unless you are contributing to the project. 
-There are some types of nodes, for the the different types of structures. 
-SimpleNode's only stores the value and a reference for the rest of the linked nodes.
+There are some types of nodes, for the many types of structures. 
+`SimpleNode` only stores the value and a reference for the rest of the linked nodes.
 
 ```c
 // Struct
@@ -35,7 +35,7 @@ assert(retrieved->member == example.member);
 
 ### Iterator
 
-Using structures like lists, queues, stack, and so on force you to deal with the Nodes to be able to iterate over the data. 
+Using structures like lists force you to deal with the Nodes to be able to iterate over the data. 
 To avoid that, the `Iterator` interface is provided to simplify things.
 
 ```c
@@ -67,9 +67,9 @@ assert(retrieved1->member == test1.member);
 assert(retrieved2->member == test2.member);
 ```
 
-An important detail: when the `Iterator` reaches the end, will return `NULL` and the memory allocated will be freed, leaving you with just a pointer and a SegFault error if try to access the iterator again.
+An important detail: when the `Iterator` reaches the end, will return `NULL` and the memory allocated will be freed, leaving you with just a pointer and a segfault error if try to access the iterator again.
 
-`Iterator` here is defined as a union, which may look like a bit of memory waste on a first glance but, there's a reason. Since there are more than one type of Node and Iterator only stores one reference, the additional memonry needed even if you are using `SimpleNode`s is worth for the access transparent interface that is provided.
+`Iterator` here is defined as a union, which may look like a bit of memory waste on a first glance but, there's a reason. Since there are more than one type of Node and Iterator only stores one reference, the additional memonry needed even if you are using `SimpleNode` is worth for the access transparent interface that is provided.
 
 ### Linked lists
 
@@ -94,4 +94,34 @@ linkedListAppend(list, (void*) &example);
 retrieved = list->first->head;
 
 assert(retrieved->member == example.member);
+```
+
+### Stack
+
+Stack is your well-known data structure, so I'm not entering in the details.
+
+```c
+// Struct
+typedef struct {
+  SimpleNode* top;
+  int size;
+} Stack;
+
+// Example
+Stack* stack = allocStack();
+TestStruct expected1, expected2, *retrieved1, *retrieved2, *retrieved3;
+
+expected1.member = 1;
+expected2.member = 2;
+
+stackPush(stack, (void*) &expected1);
+stackPush(stack, (void*) &expected2);
+
+retrieved1 = (TestStruct*) stackPop(stack);
+retrieved2 = (TestStruct*) stackPop(stack);
+retrieved3 = (TestStruct*) stackPop(stack);
+
+assert(retrieved1->member == expected2.member);
+assert(retrieved2->member == expected1.member);
+assert(retrieved3 == NULL);
 ```
