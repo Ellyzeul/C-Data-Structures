@@ -125,3 +125,36 @@ assert(retrieved1->member == expected2.member);
 assert(retrieved2->member == expected1.member);
 assert(retrieved3 == NULL);
 ```
+
+### Queue
+
+Queues follow the FIFO principle, where the first to be appended to the queue will be the first to get out. 
+The implementation is quite similar to the linked list, with a reference to the first and the last element, with a counting for the size. The only things that changes are the operations.
+
+```c
+// Struct
+typedef struct {
+  SimpleNode* first;
+  SimpleNode* last;
+  int size;
+} Queue;
+
+// Example
+Queue* queue = allocQueue();
+TestStruct expected1, expected2, expected3, *retrieved1, *retrieved2, *retrieved3;
+
+expected1.member = 2;
+expected2.member = 4;
+expected3.member = 6;
+
+queueAppend(queue, (void*) &expected1);
+queueAppend(queue, (void*) &expected2);
+retrieved1 = (TestStruct*) queueNext(queue);
+retrieved2 = (TestStruct*) queueNext(queue);
+queueAppend(queue, (void*) &expected3);
+retrieved3 = (TestStruct*) queueNext(queue);
+
+assert(retrieved1->member == expected1.member);
+assert(retrieved2->member == expected2.member);
+assert(retrieved3->member == expected3.member);
+```
