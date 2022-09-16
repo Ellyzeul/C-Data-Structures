@@ -30,7 +30,6 @@ void* queueNext(Queue* queue) {
   if(!toReturn) return NULL;
 
   toFree = queue->first;
-  queue->first->tail;
   free(toFree);
 
   return toReturn;
