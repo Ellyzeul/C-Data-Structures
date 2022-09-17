@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../src/data_structures.h"
+#include "../../src/node.h"
 
 void testAllocSimpleNode() {
   SimpleNode* node = allocSimpleNode();

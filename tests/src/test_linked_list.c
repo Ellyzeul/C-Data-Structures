@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../src/data_structures.h"
+#include "../../src/linked_list.h"
 
 void testAllocLinkedList() {
   LinkedList* list = allocLinkedList();

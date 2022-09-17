@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../src/data_structures.h"
+#include "../../src/iterator.h"
 
 void testAllocIterator() {
   SimpleNode node1, node2;

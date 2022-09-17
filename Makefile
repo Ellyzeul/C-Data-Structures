@@ -3,6 +3,7 @@ CFLAGS=-Wall
 
 SRC=src
 OBJ=obj
+AMALGAMATION=data_structures
 BUILD=build
 
 SRCS=$(wildcard $(SRC)/*.c)
@@ -16,10 +17,12 @@ TESTBIN=$(TEST)/$(OBJ)/tests.a
 ifeq ($(OS),Windows_NT)
 	CLEAR=del $(OBJ)\*.o $(TEST)\$(OBJ)\*.o $(TEST)\$(OBJ)\tests.a && rmdir $(OBJ) $(TEST)\$(OBJ)
 	MKDIR_OBJ=IF exist $(OBJ) (echo "ok") ELSE (mkdir $(OBJ))
+	MKDIR_BUILD=IF exist $(BUILD) (echo "ok") ELSE (mkdir $(BUILD))
 	MKDIR_TEST_OBJ=IF exist $(TEST)\$(OBJ) (echo "ok") ELSE (mkdir $(TEST)\$(OBJ))
 else
 	CLEAR=rm $(OBJ)/*.o $(TEST)/$(OBJ)/*.o $(TESTBIN) && rmdir $(OBJ) $(TEST)/$(OBJ)
 	MKDIR_OBJ=if test -d $(OBJ); then echo "ok"; else mkdir $(OBJ); fi
+	MKDIR_BUILD=if test -d $(BUILD); then echo "ok"; else mkdir $(BUILD); fi
 	MKDIR_TEST_OBJ=if test -d $(TEST)/$(OBJ); then echo "ok"; else mkdir $(TEST)/$(OBJ); fi
 endif
 
@@ -30,6 +33,12 @@ $(OBJ)/%.o: $(SRC)/%.c
 $(TEST)/$(OBJ)/%.o: $(TEST)/$(SRC)/%.c
 	$(MKDIR_TEST_OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/$(AMALGAMATION).a:
+	$(MKDIR_BUILD)
+	python tools/amalgamator.py
+	$(CC) $(CFLAGS) -c $(BUILD)/$(AMALGAMATION).c -o $(BUILD)/$(AMALGAMATION).o
+	ar cr $(BUILD)/$(AMALGAMATION).a $(BUILD)/$(AMALGAMATION).o
 
 $(TESTBIN): $(OBJS) $(TESTOBJS)
 	ar cr $@ $(OBJS) $(TESTOBJS)
