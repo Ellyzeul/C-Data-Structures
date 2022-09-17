@@ -1,6 +1,8 @@
-#include "data_structures.h"
+#include "stack.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "node.h"
+#include "iterator.h"
 
 Stack* allocStack() {
   Stack* stack = calloc(1, sizeof(Stack));

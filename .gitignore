@@ -4,3 +4,6 @@
 *.a
 .vscode/
 test
+build/
+obj/
+__pycache__/

@@ -1,5 +1,7 @@
-#include "data_structures.h"
+#include "queue.h"
 #include <stdlib.h>
+#include "node.h"
+#include "iterator.h"
 
 Queue* allocQueue() {
   Queue* queue = calloc(1, sizeof(Queue));

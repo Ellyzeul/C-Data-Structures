@@ -1,5 +1,7 @@
-#include "data_structures.h"
+#include "linked_list.h"
 #include <stdlib.h>
+#include "node.h"
+#include "iterator.h"
 
 LinkedList* allocLinkedList() {
   LinkedList* list = calloc(1, sizeof(LinkedList));

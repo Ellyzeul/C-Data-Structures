@@ -1,4 +1,4 @@
-#include "data_structures.h"
+#include "node.h"
 #include <stdlib.h>
 
 SimpleNode* allocSimpleNode() {

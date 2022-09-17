@@ -1,5 +1,6 @@
-#include "data_structures.h"
+#include "iterator.h"
 #include <stdlib.h>
+#include "node.h"
 
 Iterator* allocIterator(SimpleNode* first, NodeType type) {
   Iterator* iter = calloc(1, sizeof(Iterator));
