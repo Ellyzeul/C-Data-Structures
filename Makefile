@@ -34,11 +34,9 @@ $(TEST)/$(OBJ)/%.o: $(TEST)/$(SRC)/%.c
 	$(MKDIR_TEST_OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/$(AMALGAMATION).a:
+$(BUILD)/$(AMALGAMATION).c:
 	$(MKDIR_BUILD)
 	python tools/amalgamator.py
-	$(CC) $(CFLAGS) -c $(BUILD)/$(AMALGAMATION).c -o $(BUILD)/$(AMALGAMATION).o
-	ar cr $(BUILD)/$(AMALGAMATION).a $(BUILD)/$(AMALGAMATION).o
 
 $(TESTBIN): $(OBJS) $(TESTOBJS)
 	ar cr $@ $(OBJS) $(TESTOBJS)
